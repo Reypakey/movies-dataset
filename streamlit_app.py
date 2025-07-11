@@ -3,7 +3,12 @@ import numpy as np
 import pickle
 
 # Load model dan preprocessor
-model = pickle.load(open("model.pkl", "rb"))
+import os
+if os.path.exists("model.pkl"):
+    model = pickle.load(open("model.pkl", "rb"))
+else:
+    st.error("Model file not found!")
+
 scaler = pickle.load(open("scaler.pkl", "rb"))
 le_neigh = pickle.load(open("le_neigh.pkl", "rb"))
 le_room = pickle.load(open("le_room.pkl", "rb"))
